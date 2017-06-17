@@ -1,3 +1,3 @@
 # react-autotip
 
-Easy-to-use auto-positioning custom tooltips
+a variety of simple auto-positioning tooltips
