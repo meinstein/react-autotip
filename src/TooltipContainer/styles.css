@@ -1,0 +1,10 @@
+.ds-tooltip-hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.ds-tooltip-active {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.25s ease-in 0.35s;
+}

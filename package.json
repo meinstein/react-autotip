@@ -1,0 +1,57 @@
+{
+  "name": "react-tooltip",
+  "version": "0.0.1",
+  "description": "Easy-to-use auto-positioning custom tooltips",
+  "main": "build/index.js",
+  "scripts": {
+    "build": "babel src --out-dir build",
+    "prepublish": "npm run build",
+    "test": "jest",
+    "test:watch": "npm run test -- --watch",
+    "test:coverage": "npm run test -- --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/meinstein/react-autotip"
+  },
+  "keywords": [
+    "react",
+    "tooltip"
+  ],
+  "author": "Maximillian Einstein",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.16.0",
+    "babel-preset-es2015": "^6.16.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-1": "^6.16.0",
+    "babel-register": "^6.23.0",
+    "enzyme": "^2.7.1",
+    "jest": "^20.0.4",
+    "lodash": "^4.17.4",
+    "prop-types": "^15.5.10",
+    "react": "^15.3.2",
+    "react-addons-test-utils": "^15.4.2",
+    "react-dom": "^15.4.2"
+  },
+  "jest": {
+    "testRegex": "(/src/.*test\\.js)$",
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/config/__mocks__/fileMock.js",
+      "\\.(css|less)$": "<rootDir>/config/__mocks__/styleMock.js"
+    },
+    "modulePaths": [
+      "<rootDir>/src"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "react",
+      "stage-1"
+    ]
+  }
+}
