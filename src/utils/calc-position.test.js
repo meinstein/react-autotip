@@ -31,8 +31,6 @@ describe('utils', () => {
       let res = calcPosition({ containerDims, tooltipDims })
       expect(res.pos).toEqual('top')
 
-
-
       containerDims.left = left - 1
       res = calcPosition({ containerDims, tooltipDims })
       expect(res.pos).toEqual('right')

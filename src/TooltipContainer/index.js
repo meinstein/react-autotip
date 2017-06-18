@@ -8,8 +8,8 @@ import { calcPosition, enums } from '../utils'
 import styles from './styles'
 import './styles.css'
 
-class TooltipContainer extends React.Component {
 
+class TooltipContainer extends React.Component {
 
   componentDidMount() {
     window.addEventListener(enums.ON_TOOLTIP, this.setTooltip)
