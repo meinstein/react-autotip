@@ -28,7 +28,7 @@ describe('Tooltip Container', () => {
     }
 
     // call method attached to custom event
-    map[enums.ON_TOOLTIP]({ detail })
+    map[enums.ON_TOOLTIP]({detail})
 
     // take snapshot of state
     const state = wrapper.state()
