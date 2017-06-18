@@ -2,9 +2,9 @@
 import React from 'react'
 
 const App = () => (
-    <div style={{color: 'black'}}>
-        hello world again
-    </div>
+  <div style={{color: 'black'}}>
+    hello world
+  </div>
 )
 
 export default App
