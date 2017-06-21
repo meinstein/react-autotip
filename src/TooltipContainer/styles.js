@@ -6,6 +6,7 @@ const container = {
   position: 'fixed',
   fontFamily: styles.fontFamily,
   zIndex: 100,
+  borderRadius: 2,
 }
 
 const content = {
@@ -30,20 +31,18 @@ export default {
       backgroundColor: styles.opaqueGrey,
       color: 'white',
       pointerEvents: 'none',
-      borderRadius: 4,
     },
     dialog: {
       ...container,
       backgroundColor: 'white',
       border: `1px solid ${styles.lightgrey}`,
       boxShadow: '0px 4px 14px 1px rgba(0, 0, 0, 0.1)',
-      borderRadius: 2,
     }
   },
   content: {
     info: {
       ...content,
-      padding: 1.5 * styles.unit,
+      padding: 2 * styles.unit,
     },
     dialog: {
       ...content,
