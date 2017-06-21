@@ -36,10 +36,8 @@ export default {
       ...container,
       backgroundColor: 'white',
       border: `1px solid ${styles.lightgrey}`,
-      boxShadow: '0 2px 17px 0 rgba(0, 0, 0, 0.1)',
+      boxShadow: '0px 4px 14px 1px rgba(0, 0, 0, 0.1)',
       borderRadius: 2,
-      minWidth: 150,
-      maxWidth: 300
     }
   },
   content: {

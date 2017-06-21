@@ -13,6 +13,7 @@ class Tooltip extends React.Component {
     children: PropTypes.node.isRequired,
     text: PropTypes.string.isRequired,
     style: PropTypes.object,
+    tooltipStyle: PropTypes.object,
     type: PropTypes.oneOf(['info', 'dialog'])
   }
 
@@ -26,8 +27,8 @@ class Tooltip extends React.Component {
       detail: {
         text: this.props.text,
         type: this.props.type,
+        tooltipStyle: this.props.tooltipStyle,
         // DOMRect properties are inherited from DOMRectPrototype
-        // therefore 'extend' is used to iterate over these inherited props
         containerDims: extend({}, this.node.getBoundingClientRect())
       }
     })
@@ -42,6 +43,7 @@ class Tooltip extends React.Component {
       detail: {
         text: '',
         type: '',
+        tooltipStyle: {},
         containerDims: {}
       }
     })

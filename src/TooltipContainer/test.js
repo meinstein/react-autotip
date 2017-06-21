@@ -24,6 +24,7 @@ describe('Tooltip Container', () => {
     const detail = {
       text: 'test',
       type: 'info',
+      tooltipStyle: {},
       containerDims: {}
     }
 

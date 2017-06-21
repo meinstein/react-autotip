@@ -1,7 +1,7 @@
 export default {
   container: {
     position: 'relative',
-    display: 'flex',
+    display: 'inline-flex',
     justifyContent: 'center',
     alignItems: 'center',
   }
