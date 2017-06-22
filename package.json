@@ -1,5 +1,5 @@
 {
-  "name": "react-tooltip",
+  "name": "react-autotip",
   "version": "0.0.1",
   "description": "A variety of simple auto-positioning tooltips",
   "main": "build/index.js",
