@@ -12,7 +12,7 @@ class Tooltip extends React.Component {
     children: PropTypes.node.isRequired,
     text: PropTypes.string.isRequired,
     style: PropTypes.object,
-    tooltipStyle: PropTypes.object,
+    tooltipStyles: PropTypes.object,
     type: PropTypes.oneOf(['info', 'dialog'])
   }
 
@@ -26,7 +26,7 @@ class Tooltip extends React.Component {
       detail: {
         text: this.props.text,
         type: this.props.type,
-        tooltipStyle: this.props.tooltipStyle,
+        tooltipStyles: this.props.tooltipStyles,
         containerDims: getBoundingClientRect(this.node)
       }
     })
@@ -41,7 +41,7 @@ class Tooltip extends React.Component {
       detail: {
         text: '',
         type: '',
-        tooltipStyle: {},
+        tooltipStyles: {},
         containerDims: {}
       }
     })

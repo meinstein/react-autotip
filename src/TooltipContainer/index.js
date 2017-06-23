@@ -32,13 +32,13 @@ class TooltipContainer extends React.Component {
   }
 
   render() {
-    const { text, type, tooltipStyle, containerDims, tooltipDims } = this.state
+    const { text, type, tooltipStyles, containerDims, tooltipDims } = this.state
     const { pos = 'top', ...rest } = calcPosition({ containerDims, tooltipDims })
 
     return (
       <div
         className={`react-autotip-${isEmpty(rest) ? 'hidden' : 'active'}`}
-        style={{ ...styles.container[type], ...rest, ...tooltipStyle }}
+        style={{ ...styles.container[type], ...rest, ...tooltipStyles }}
         ref={tooltip => this.tooltip = tooltip}
       >
         <div style={styles.content[type]}>

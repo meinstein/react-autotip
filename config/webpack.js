@@ -6,10 +6,10 @@ var projectPaths = require('./projectPaths')
 
 // default to prod dev configuration
 var devtool = ''
-
+// exclude React in prod build
+var externals = {}
 // entry differs based on env
 var entry = []
-
 // initial set of plugins
 var plugins = [
   new webpack.NamedModulesPlugin(),
@@ -22,10 +22,10 @@ var plugins = [
 if (process.env.NODE_ENV === 'production') {
   // entry
   entry.push(projectPaths.entry)
-
   // use production configuration instead
   devtool = ''
-
+  // do not include react in build
+  externals = {'react': 'react'}
   // optmize the build for production
   plugins.push(
     new webpack.LoaderOptionsPlugin({
@@ -106,9 +106,7 @@ module.exports = {
       'node_modules',
     ]
   },
-  externals: {
-    'react': 'react'
-  },
+  externals: externals,
   plugins: plugins,
   devtool: devtool
 }
