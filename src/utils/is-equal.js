@@ -1,9 +1,13 @@
 const isEqual = (a, b) => {
-  for (const [key, value] of Object.entries(a)) {
-    if (b[key] !== value) {
+  Object.keys(a).forEach(key => {
+    if (b[key] === undefined) {
       return false
     }
-  }
+
+    if (a[key] !== b[key]) {
+      return false
+    }
+  })
 
   return true
 }

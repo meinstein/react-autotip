@@ -1,6 +1,6 @@
 {
   "name": "react-autotip",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A variety of simple auto-positioning tooltips",
   "main": "index.js",
   "module": "lib/index.js",
