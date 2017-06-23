@@ -88,7 +88,7 @@ module.exports = {
           projectPaths.exampleDir,
         ],
         query: {
-            extends: projectPaths.babelConfig,
+          extends: projectPaths.babelConfig,
         },
       }, {
         test: /\.css$/,
@@ -107,7 +107,7 @@ module.exports = {
     ]
   },
   externals: {
-    'react': 'React'
+    'react': 'react'
   },
   plugins: plugins,
   devtool: devtool
