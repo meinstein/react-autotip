@@ -1,9 +1,8 @@
 // external imports
 import React from 'react'
 import PropTypes from 'prop-types'
-import extend from 'lodash/extend'
 // local imports
-import { enums } from '../utils'
+import { getBoundingClientRect, enums } from '../utils'
 import styles from './styles'
 
 
@@ -28,8 +27,7 @@ class Tooltip extends React.Component {
         text: this.props.text,
         type: this.props.type,
         tooltipStyle: this.props.tooltipStyle,
-        // DOMRect properties are inherited from DOMRectPrototype
-        containerDims: extend({}, this.node.getBoundingClientRect())
+        containerDims: getBoundingClientRect(this.node)
       }
     })
 

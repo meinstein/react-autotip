@@ -17,7 +17,7 @@ const App = () => (
           text="testing the tooltip"
         >
           <div style={styles.infoBox}>
-            type="info"
+            type=info
           </div>
         </Tooltip>
         <Tooltip
@@ -26,7 +26,7 @@ const App = () => (
           text="testing the tooltip"
         >
           <div style={styles.dialogBox}>
-            type="dialog"
+            type=dialog
           </div>
         </Tooltip>
       </div>
@@ -37,7 +37,7 @@ const App = () => (
           text="testing the tooltip"
         >
           <div style={styles.infoBox}>
-            type="info"
+            type=info
           </div>
         </Tooltip>
         <Tooltip
@@ -46,7 +46,7 @@ const App = () => (
           text="testing the tooltip"
         >
           <div style={styles.dialogBox}>
-            type="dialog"
+            type=dialog
           </div>
         </Tooltip>
       </div>
@@ -57,7 +57,7 @@ const App = () => (
           text="testing the tooltip"
         >
           <div style={styles.infoBox}>
-            type="info"
+            type=info
           </div>
         </Tooltip>
         <Tooltip
@@ -66,7 +66,7 @@ const App = () => (
           text="testing the tooltip"
         >
           <div style={styles.dialogBox}>
-            type="dialog"
+            type=dialog
           </div>
         </Tooltip>
       </div>

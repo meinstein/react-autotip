@@ -19,6 +19,6 @@ render(App)
 
 if (module.hot) {
   module.hot.accept('./app', () => {
-      render(App)
+    render(App)
   })
 }

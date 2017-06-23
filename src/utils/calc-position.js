@@ -1,5 +1,5 @@
 // external imports
-import { isEmpty } from 'lodash'
+import { isEmpty } from '.'
 
 // the offset between the tooltip and the tooltip's parent
 export const offset = 8

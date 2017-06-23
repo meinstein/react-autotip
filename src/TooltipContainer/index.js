@@ -1,10 +1,7 @@
 // external imports
 import React from 'react'
-import isEmpty from 'lodash/isEmpty'
-import isEqual from 'lodash/isEqual'
-import extend from 'lodash/extend'
 // local imports
-import { calcPosition, enums } from '../utils'
+import { isEmpty, isEqual, getBoundingClientRect, calcPosition, enums } from '../utils'
 import styles from './styles'
 import './styles.css'
 
@@ -20,7 +17,7 @@ class TooltipContainer extends React.Component {
   }
 
   componentDidUpdate(_, { tooltipDims: previousDims }) {
-    const currentDims = extend({}, this.tooltip.getBoundingClientRect())
+    const currentDims = getBoundingClientRect(this.tooltip)
 
     if (!isEqual(previousDims, currentDims)) {
       this.setState({ tooltipDims: currentDims })
