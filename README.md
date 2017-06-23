@@ -6,7 +6,7 @@
 
 A handful of simple, auto-positioning tooltips
 
-## example
+## Example
 
 ```js
 const MyComponent = () => (
@@ -22,6 +22,11 @@ const MyComponent = () => (
 )
 ```
 
-## Automatic positioning
+## Automatic Positioning
 
-Wrap any element with a Tooltip and it will automatically position itself to either the top, right, bottom, or left depending on where in the viewport it is rendered.
+Wrap any element with a Tooltip and it will automatically position itself to either the top, right, bottom, or left based on where in the viewport its child element is rendered.
+
+## Types
+
+- `info`: (*default*) A standard tooltip with a small caret.
+- `dialog`: A sleek, caret-less tooltip with a white background & slight box shadow.

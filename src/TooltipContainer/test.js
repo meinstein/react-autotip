@@ -14,8 +14,11 @@ describe('Tooltip Container', () => {
 
   test('recieves and registers data from custom event', () => {
     // keep track of events being added
-    const map = {}
-    window.addEventListener = jest.fn((event, cb) => map[event] = cb)
+    const events = {}
+    // stub event being added
+    window.addEventListener = jest.fn((event, cb) => events[event] = cb)
+    // stub remove event listener
+    window.removeEventListener = jest.fn()
 
     // render component
     const wrapper = mount(<TooltipContainer />)
@@ -29,7 +32,7 @@ describe('Tooltip Container', () => {
     }
 
     // call method attached to custom event
-    map[enums.ON_TOOLTIP]({detail})
+    events[enums.ON_TOOLTIP]({detail})
 
     // take snapshot of state
     const state = wrapper.state()
@@ -38,5 +41,11 @@ describe('Tooltip Container', () => {
     Reflect.deleteProperty(state, 'tooltipDims')
 
     expect(state).toEqual(detail)
+
+    // no unmount the component
+    wrapper.unmount()
+
+    // make sure we remove event listener on unmount
+    expect(window.removeEventListener.mock.calls.length).toBe(1)
   })
 })

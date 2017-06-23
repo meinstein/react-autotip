@@ -8,11 +8,12 @@ export default function(a, b) {
     return true
   }
 
-  // if lengths are different
+  // if lens are different
   if (aKeys.length !== bKeys.length) {
     return false
   }
 
+  // check each key/val
   for (const key of aKeys) {
     if (a[key] !== b[key]) {
       return false
