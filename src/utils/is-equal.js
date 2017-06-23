@@ -1,6 +1,6 @@
 const isEqual = (a, b) => {
   Object.keys(a).forEach(key => {
-    if (b[key] === undefined) {
+    if (typeof b[key] === 'undefined') {
       return false
     }
 
