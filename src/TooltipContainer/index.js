@@ -19,9 +19,9 @@ class TooltipContainer extends React.Component {
   }
 
   static defaultProps = {
-    offset: 8,
-    padding: 16,
-    caretSize: 5
+    offset: enums.offset,
+    padding: enums.padding,
+    caretSize: enums.caretSize
   }
 
   componentDidMount() {
@@ -56,6 +56,7 @@ class TooltipContainer extends React.Component {
       <div
         className={`react-autotip-${isEmpty(rest) ? 'hidden' : 'active'}`}
         style={{ ...styles.container[type], ...rest, ...tooltipStyles }}
+        onTransitionEnd={() => console.log('done')}
         ref={tooltip => this.tooltip = tooltip}
       >
         <div style={styles.content[type]}>

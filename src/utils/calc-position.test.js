@@ -1,5 +1,8 @@
 // local imports
-import calcPosition, { offset, padding } from './calc-position'
+import calcPosition from './calc-position'
+
+import enums from './enums'
+const { offset, padding } = enums
 
 // dims of container that spawns tooltip
 const container = { height: 25, width: 25 }
@@ -20,7 +23,7 @@ describe('utils', () => {
     test('can position to the top of container (default)', () => {
       // the dims of the container that spawns the tooltip
       const containerDims = { ...container, top: 100, left: 100 }
-      const res = calcPosition({ containerDims, tooltipDims })
+      const res = calcPosition({ containerDims, tooltipDims, offset, padding })
       expect(res.pos).toEqual('top')
     })
 
@@ -28,11 +31,11 @@ describe('utils', () => {
       const left = padding + (tooltipDims.width / 2) - (container.width / 2)
 
       const containerDims = { ...container, top: 100, left }
-      let res = calcPosition({ containerDims, tooltipDims })
+      let res = calcPosition({ containerDims, tooltipDims, offset, padding })
       expect(res.pos).toEqual('top')
 
       containerDims.left = left - 1
-      res = calcPosition({ containerDims, tooltipDims })
+      res = calcPosition({ containerDims, tooltipDims, offset, padding })
       expect(res.pos).toEqual('right')
     })
 
@@ -40,11 +43,11 @@ describe('utils', () => {
       const left = window.innerWidth - (tooltipDims.width / 2) - padding - (container.width / 2)
 
       const containerDims = { ...container, top: 100, left }
-      let res = calcPosition({ containerDims, tooltipDims })
+      let res = calcPosition({ containerDims, tooltipDims, offset, padding })
       expect(res.pos).toEqual('top')
 
       containerDims.left = left + 1
-      res = calcPosition({ containerDims, tooltipDims })
+      res = calcPosition({ containerDims, tooltipDims, offset, padding })
       expect(res.pos).toEqual('left')
     })
 
@@ -52,11 +55,11 @@ describe('utils', () => {
       const top = padding + tooltipDims.height + offset
 
       const containerDims = { ...container, left: 100, top }
-      let res = calcPosition({ containerDims, tooltipDims })
+      let res = calcPosition({ containerDims, tooltipDims, offset, padding })
       expect(res.pos).toEqual('top')
 
       containerDims.top = top - 1
-      res = calcPosition({ containerDims, tooltipDims })
+      res = calcPosition({ containerDims, tooltipDims, offset, padding })
       expect(res.pos).toEqual('bottom')
     })
   })
