@@ -26,7 +26,28 @@ const MyComponent = () => (
 
 Wrap any element with a Tooltip and it will automatically position itself to either the top, right, bottom, or left based on where in the viewport its child element is rendered.
 
-## Types
+## TooltipContainer
 
-- `info`: (*default*) A standard tooltip with a small caret.
-- `dialog`: A sleek, caret-less tooltip with a white background & slight box shadow.
+#### Props
+|   name         |     default    |    description                                                    |
+|----------------|----------------|-------------------------------------------------------------------|
+| padding        |        16px    | Minimum padding between edge of viewport and tooltip              |
+| offset         |        8px     | Offset between the tooltip and the tooltip's child                |
+| caretSize      |        5px     | Size of the tooltip's caret                                       |
+
+## Tooltip
+
+#### Type (prop)
+
+|   name         |     default    |    description                                                    |
+|----------------|----------------|-------------------------------------------------------------------|
+| info           |       ✘        | A standard tooltip with a small caret                             |
+| dialog         |                | A caret-less tooltip with a white background                      |
+
+#### Other props
+
+|   name         |     default    |    description                                                    |
+|----------------|----------------|-------------------------------------------------------------------|
+| text           |        ""      | The text to render inside the tooltip                             |
+| style          |        {}      | Pass any positioning style, etc here                              |
+| tooltipStyles  |        {}      | Change aspects of the tooltip's style                             |

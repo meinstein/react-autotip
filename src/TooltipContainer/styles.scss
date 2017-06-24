@@ -1,4 +1,4 @@
-// VARIABLES
+// variables
 $duration: 600ms;
 $offset: 4px;
 
@@ -6,8 +6,7 @@ $offset: 4px;
   opacity: 0;
 }
 
-
-// TOP //
+// pos = TOP //
 .react-autotip-active-top {
   animation-name: react-autotip-top-kf;
   animation-duration: $duration;
@@ -31,7 +30,7 @@ $offset: 4px;
 // ------------------------ //
 
 
-// BOTTOM //
+// pos = BOTTOM //
 .react-autotip-active-bottom {
   animation-name: react-autotip-bottom-kf;
   animation-duration: $duration;
@@ -55,7 +54,7 @@ $offset: 4px;
 // ------------------------ //
 
 
-// LEFT //
+// pos = LEFT //
 .react-autotip-active-left {
   animation-name: react-autotip-left-kf;
   animation-duration: $duration;
@@ -79,7 +78,7 @@ $offset: 4px;
 // ------------------------ //
 
 
-// RIGHT //
+// pos = RIGHT //
 .react-autotip-active-right {
   animation-name: react-autotip-right-kf;
   animation-duration: $duration;

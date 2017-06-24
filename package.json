@@ -1,6 +1,6 @@
 {
   "name": "react-autotip",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A variety of simple auto-positioning tooltips",
   "main": "index.js",
   "module": "lib/index.js",
@@ -62,7 +62,7 @@
     "testRegex": "(/src/.*test\\.js)$",
     "moduleNameMapper": {
       "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/config/__mocks__/fileMock.js",
-      "\\.(css|less)$": "<rootDir>/config/__mocks__/styleMock.js"
+      "\\.(css|scss)$": "<rootDir>/config/__mocks__/styleMock.js"
     },
     "modulePaths": [
       "<rootDir>/src"
