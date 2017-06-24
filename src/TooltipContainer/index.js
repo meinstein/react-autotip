@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 // local imports
 import { isEmpty, isEqual, getBoundingClientRect, calcPosition, enums } from '../utils'
 import styles, { caretStyles } from './styles'
-import './styles.css'
+import './styles.scss'
 
 
 class TooltipContainer extends React.Component {
@@ -54,10 +54,9 @@ class TooltipContainer extends React.Component {
 
     return (
       <div
-        className={`react-autotip-${isEmpty(rest) ? 'hidden' : 'active'}`}
+        className={`react-autotip-${isEmpty(rest) ? 'hidden' : `active-${pos}`}`}
         style={{ ...styles.container[type], ...rest, ...tooltipStyles }}
-        onTransitionEnd={() => console.log('done')}
-        ref={tooltip => this.tooltip = tooltip}
+        ref={ele => this.tooltip = ele}
       >
         <div style={styles.content[type]}>
           {text}

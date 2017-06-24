@@ -73,7 +73,7 @@ module.exports = {
     rules: [
       {
         test: /\.jsx?$/,
-        enforce: "pre",
+        enforce: 'pre',
         exclude: /node_modules/,
         use:[{loader: 'eslint-loader', options: {
             configFile: projectPaths.eslintConfig
@@ -91,8 +91,14 @@ module.exports = {
           extends: projectPaths.babelConfig,
         },
       }, {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        test: /\.scss$/,
+        use: [{
+          loader: 'style-loader'
+        }, {
+          loader: 'css-loader'
+        }, {
+          loader: 'sass-loader'
+        }]
       }, {
         test: /\.(png|jpg|ttf)$/,
         loader: 'url-loader',
