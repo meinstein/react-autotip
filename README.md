@@ -6,9 +6,13 @@
 
 A handful of simple, auto-positioning tooltips
 
+`npm i react-autotip`
+
 ## Example
 
 ```js
+import { Tooltip, TooltipContainer } from 'react-autotip'
+
 const MyComponent = () => (
   <div>
     {/* must render one instance of TooltipContainer somewhere in your app */}
