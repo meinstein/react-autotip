@@ -1,7 +1,5 @@
 import { styles } from '../utils'
 
-const caretSize = 5
-
 const container = {
   position: 'fixed',
   fontFamily: styles.fontFamily,
@@ -48,39 +46,40 @@ export default {
       ...content,
       padding: 3 * styles.unit,
     }
-  },
-  caret: {
-    top: {
-      ...caret,
-      left: '50%',
-      transform: 'translateX(-50%)',
-      borderColor: `${styles.opaqueGrey} transparent transparent transparent`,
-      borderWidth: `${caretSize}px ${caretSize}px 0 ${caretSize}px`,
-      bottom: -caretSize,
-    },
-    right: {
-      ...caret,
-      top: '50%',
-      transform: 'translateY(-50%)',
-      borderColor: `transparent ${styles.opaqueGrey} transparent transparent`,
-      borderWidth: `${caretSize}px ${caretSize}px ${caretSize}px 0`,
-      left: -caretSize,
-    },
-    left: {
-      ...caret,
-      top: '50%',
-      transform: 'translateY(-50%)',
-      borderColor: `transparent transparent transparent ${styles.opaqueGrey}`,
-      borderWidth: `${caretSize}px 0 ${caretSize}px ${caretSize}px`,
-      right: -caretSize,
-    },
-    bottom: {
-      ...caret,
-      left: '50%',
-      transform: 'translateX(-50%)',
-      borderColor: `transparent transparent ${styles.opaqueGrey} transparent`,
-      borderWidth: `0 ${caretSize}px ${caretSize}px ${caretSize}px`,
-      top: -caretSize,
-    }
   }
 }
+
+export const caretStyles = ({caretSize}) => ({
+  top: {
+    ...caret,
+    left: '50%',
+    transform: 'translateX(-50%)',
+    borderColor: `${styles.opaqueGrey} transparent transparent transparent`,
+    borderWidth: `${caretSize}px ${caretSize}px 0 ${caretSize}px`,
+    bottom: -caretSize,
+  },
+  right: {
+    ...caret,
+    top: '50%',
+    transform: 'translateY(-50%)',
+    borderColor: `transparent ${styles.opaqueGrey} transparent transparent`,
+    borderWidth: `${caretSize}px ${caretSize}px ${caretSize}px 0`,
+    left: -caretSize,
+  },
+  left: {
+    ...caret,
+    top: '50%',
+    transform: 'translateY(-50%)',
+    borderColor: `transparent transparent transparent ${styles.opaqueGrey}`,
+    borderWidth: `${caretSize}px 0 ${caretSize}px ${caretSize}px`,
+    right: -caretSize,
+  },
+  bottom: {
+    ...caret,
+    left: '50%',
+    transform: 'translateX(-50%)',
+    borderColor: `transparent transparent ${styles.opaqueGrey} transparent`,
+    borderWidth: `0 ${caretSize}px ${caretSize}px ${caretSize}px`,
+    top: -caretSize,
+  }
+})

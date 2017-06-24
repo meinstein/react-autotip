@@ -10,7 +10,7 @@ const App = () => (
     {/* must render one instance of TooltipContainer somewhere */}
     <TooltipContainer />
     <div style={{display: 'flex', height: '100vh', justifyContent: 'space-between'}}>
-      <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
+      <div style={{}}>
         <Tooltip
           style={styles.tooltip}
           type="info"
@@ -30,7 +30,7 @@ const App = () => (
           </div>
         </Tooltip>
       </div>
-      <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
+      <div style={{}}>
         <Tooltip
           style={styles.tooltip}
           type="info"
@@ -50,7 +50,7 @@ const App = () => (
           </div>
         </Tooltip>
       </div>
-      <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
+      <div style={{}}>
         <Tooltip
           style={styles.tooltip}
           type="info"

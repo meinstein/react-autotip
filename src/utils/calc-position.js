@@ -1,12 +1,7 @@
 // external imports
 import { isEmpty } from '.'
 
-// the offset between the tooltip and the tooltip's parent
-export const offset = 8
-// the padding between the edge of the window and the tooltip
-export const padding = 16
-
-const calcPosition = ({ containerDims, tooltipDims }) => {
+const calcPosition = ({ containerDims, tooltipDims, offset, padding }) => {
   // return empty when container or tooltip dims not provided
   if (isEmpty(containerDims) || isEmpty(tooltipDims)) {
     return {}
