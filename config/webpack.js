@@ -65,6 +65,7 @@ if (process.env.NODE_ENV === 'production') {
 module.exports = {
   entry: entry,
   output: {
+    path: projectPaths.buildDir,
     filename: 'index.js',
     library: 'react-tooltip',
     libraryTarget: 'umd',

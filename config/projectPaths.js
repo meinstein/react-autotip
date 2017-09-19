@@ -7,7 +7,7 @@ var root = path.join(__dirname, '..')
 // source directory
 var sourceDir = path.join(root, 'src')
 // build directory
-var buildDir = path.join(root, 'build')
+var buildDir = path.join(root, 'lib')
 // configuration directory
 var configDir = path.join(root, 'config')
 // example directory
@@ -19,7 +19,7 @@ module.exports = {
     // directories
     rootDir: root,
     sourceDir: sourceDir,
-    buildDir: root,
+    buildDir: buildDir,
     exampleDir: exampleDir,
     // entry points
     entry: path.join(sourceDir, 'index.js'),
