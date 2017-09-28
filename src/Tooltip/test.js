@@ -56,4 +56,23 @@ describe('Tooltip', () => {
     // verify that dispatchEvent was called
     expect(global.dispatchEvent.mock.calls.length).toBe(1)
   })
+
+  test('toggleOnClick requires click event in order to dispatchEvent', () => {
+    // render component
+    const wrapper = mount(
+      <Tooltip text="test" toggleOnClick>
+        <span>test</span>
+      </Tooltip>
+    )
+
+    // simulate mouseenter on tooltip container
+    wrapper.find('div').first().simulate('mouseenter')
+    // verify that dispatchEvent was was NOT called
+    expect(global.dispatchEvent.mock.calls.length).toBe(0)
+
+    // simulate click on tooltip container
+    wrapper.find('div').first().simulate('click')
+    // verify that dispatchEvent was called
+    expect(global.dispatchEvent.mock.calls.length).toBe(1)
+  })
 })

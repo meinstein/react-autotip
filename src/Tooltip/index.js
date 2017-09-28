@@ -12,6 +12,7 @@ class Tooltip extends React.Component {
     children: PropTypes.node.isRequired,
     text: PropTypes.string.isRequired,
     style: PropTypes.object,
+    toggleOnClick: PropTypes.bool,
     tooltipStyles: PropTypes.object,
     type: PropTypes.oneOf(['info', 'dialog'])
   }
@@ -51,13 +52,16 @@ class Tooltip extends React.Component {
   }
 
   render() {
+    const { toggleOnClick } = this.props
+
     return (
       <div
         ref={node => this.node = node}
         style={{...styles.container, ...this.props.style}}
-        onClick={this._clear}
+        onClick={toggleOnClick ? this._dispatch : this._clear}
+        onScroll={this._clear}
         onMouseLeave={this._clear}
-        onMouseEnter={this._dispatch}
+        onMouseEnter={!toggleOnClick && this._dispatch}
       >
         {this.props.children}
       </div>

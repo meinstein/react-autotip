@@ -10,6 +10,8 @@ const container = {
 const content = {
   position: 'relative',
   lineHeight: 1,
+  fontSmoothing: 'antialiased',
+  transform: 'translateZ(0px)'
 }
 
 const caret = {

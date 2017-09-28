@@ -55,3 +55,4 @@ Wrap any element with a Tooltip and it will automatically position itself to eit
 | text           |        ""      | The text to render inside the tooltip                             |
 | style          |        {}      | Pass any positioning style, etc here                              |
 | tooltipStyles  |        {}      | Change aspects of the tooltip's style                             |
+| toggleOnClick  |      false     | Tooltip appears only after clicking on target element             |
