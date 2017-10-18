@@ -71,6 +71,8 @@ const App = () => (
         </Tooltip>
       </div>
     </div>
+
+    {/* click to toggle example */}
     <div style={{marginTop: 50}}>
       <Tooltip
         style={styles.tooltip}

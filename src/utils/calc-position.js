@@ -17,10 +17,22 @@ const calcPosition = ({ containerDims, tooltipDims, offset, padding }) => {
   // top, left, translateX, and translateY values for positioning
   // the tooltip in a centered fashion across various orientations
   const positions = {
-    top: {top: top - offset, left: horizontalCenter, tx: -50, ty: -100},
-    bottom: {top: top + height + offset, left: horizontalCenter, tx: -50, ty: 0},
-    left: {top: verticalCenter, left: left - offset, tx: -100, ty: -50},
-    right: {top: verticalCenter, left: left + width + offset, tx: 0, ty: -50},
+    top: {
+      top: top - offset,
+      left: horizontalCenter
+    },
+    bottom: {
+      top: top + height + offset,
+      left: horizontalCenter
+    },
+    left: {
+      top: verticalCenter,
+      left: left - offset
+    },
+    right: {
+      top: verticalCenter,
+      left: left + width + offset
+    }
   }
 
   // default pos
@@ -47,8 +59,7 @@ const calcPosition = ({ containerDims, tooltipDims, offset, padding }) => {
   return {
     pos,
     top: positions[pos].top,
-    left: positions[pos].left,
-    transform: `translate(${positions[pos].tx}%, ${positions[pos].ty}%)`
+    left: positions[pos].left
   }
 }
 

@@ -61,7 +61,7 @@ class Tooltip extends React.Component {
         onClick={toggleOnClick ? this._dispatch : this._clear}
         onScroll={this._clear}
         onMouseLeave={this._clear}
-        onMouseEnter={!toggleOnClick && this._dispatch}
+        onMouseEnter={toggleOnClick ? () => ({}) : this._dispatch}
       >
         {this.props.children}
       </div>

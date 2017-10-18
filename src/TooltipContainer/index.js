@@ -1,11 +1,23 @@
 // external imports
 import React from 'react'
 import PropTypes from 'prop-types'
+import { Motion, spring } from 'react-motion'
 // local imports
-import { isEmpty, isEqual, getBoundingClientRect, calcPosition, enums } from '../utils'
+import { isEqual, getBoundingClientRect, calcPosition, enums } from '../utils'
 import styles, { caretStyles } from './styles'
-import './styles.scss'
 
+const motionConfig = {
+  stiffness: 150,
+  damping: 20
+}
+
+const initialState = {
+  text: '',
+  type: '',
+  containerDims: {},
+  tooltipDims: {},
+  showTooltip: false
+}
 
 class TooltipContainer extends React.Component {
 
@@ -24,12 +36,14 @@ class TooltipContainer extends React.Component {
     caretSize: enums.caretSize
   }
 
+  state = initialState
+
   componentDidMount() {
-    window.addEventListener(enums.ON_TOOLTIP, this.setTooltip)
+    window.addEventListener(enums.ON_TOOLTIP, this._setTooltip)
   }
 
   componentWillUnmount() {
-    window.removeEventListener(enums.ON_TOOLTIP, this.setTooltip)
+    window.removeEventListener(enums.ON_TOOLTIP, this._setTooltip)
   }
 
   componentDidUpdate(_, { tooltipDims: previousDims }) {
@@ -40,43 +54,74 @@ class TooltipContainer extends React.Component {
     }
   }
 
-  setTooltip({ detail }) {
-    this.setState({
-      ...detail,
-      tooltipDims: {}
-    })
+  _setTooltip = ({ detail }) => {
+    // if we have valid tooltip data to display
+    if (detail.text) {
+      this.setState(prevState => ({
+        ...prevState,
+        ...detail,
+        tooltipDims: {},
+        showTooltip: true,
+      }))
+    } else {
+      this.setState(prevState => ({
+        ...prevState,
+        showTooltip: false
+      }))
+    }
+  }
+
+  _getTranslation = (val, pos) => {
+    switch (pos) {
+    case 'top':
+      return `translate(-50%, calc(${val}px - 100%))`
+    case 'right':
+      return `translate(${-val}px, -50%)`
+    case 'bottom':
+      return `translate(-50%, ${-val}px)`
+    case 'left':
+      return `translate(calc(${val}px - 100%), -50%)`
+    default:
+      return null
+    }
   }
 
   render() {
-    const { text, type, tooltipStyles, containerDims, tooltipDims } = this.state
+    const { text, type, tooltipStyles, containerDims, tooltipDims, showTooltip } = this.state
     const { offset, padding, caretSize } = this.props
     const { pos = 'top', ...rest } = calcPosition({ containerDims, tooltipDims, offset, padding })
 
     return (
-      <div
-        className={`react-autotip-${isEmpty(rest) ? 'hidden' : `active-${pos}`}`}
-        style={{ ...styles.container[type], ...rest, ...tooltipStyles }}
-        ref={ele => this.tooltip = ele}
+      <Motion
+        defaultStyle={{
+          opacity: 0,
+          translate: 4
+        }}
+        style={{
+          opacity: spring(showTooltip ? 1 : 0, motionConfig),
+          translate: spring(showTooltip ? 0 : 4, motionConfig)
+        }}
+        onRest={() => !showTooltip && this.setState(() => initialState)}
       >
-        <div style={styles.content[type]}>
-          {text}
-          {type === 'info' && <div style={caretStyles({caretSize})[pos]} />}
-        </div>
-      </div>
+        {({opacity, translate}) => {
+          return <div
+            ref={ele => this.tooltip = ele}
+            style={{
+              ...styles.container[type],
+              ...rest,
+              ...tooltipStyles,
+              opacity,
+              transform: this._getTranslation(translate, pos)
+            }}
+          >
+            <div style={styles.content[type]}>
+              {text}
+              {type === 'info' && <div style={caretStyles({caretSize})[pos]} />}
+            </div>
+          </div>
+        }}
+      </Motion>
     )
-  }
-
-  constructor() {
-    super()
-
-    this.state = {
-      text: '',
-      type: '',
-      containerDims: {},
-      tooltipDims: {},
-    }
-
-    this.setTooltip = this.setTooltip.bind(this)
   }
 }
 

@@ -48,8 +48,8 @@
     "node-sass": "^4.5.3",
     "npm": "^5.0.3",
     "prop-types": "^15.5.10",
-    "react": "^15.6.1",
-    "react-dom": "^15.6.1",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
     "react-hot-loader": "next",
     "react-test-renderer": "^15.6.1",
     "sass-loader": "^6.0.6",
@@ -69,5 +69,8 @@
     "coveragePathIgnorePatterns": [
       "/node_modules/"
     ]
+  },
+  "dependencies": {
+    "react-motion": "^0.5.2"
   }
 }
