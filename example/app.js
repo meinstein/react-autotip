@@ -1,14 +1,12 @@
 // external imports
 import React from 'react'
 // internal imports
-import { TooltipContainer, Tooltip } from '../src'
+import { Tooltip } from '../src'
 // local imports
 import styles from './styles'
 
 const App = () => (
   <div style={styles.container}>
-    {/* must render one instance of TooltipContainer somewhere */}
-    <TooltipContainer />
     <div style={{display: 'flex', justifyContent: 'space-between'}}>
       <div style={{}}>
         <Tooltip

@@ -1,10 +1,16 @@
 // external imports
 import React from 'react'
+import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
+import { Motion, spring, presets } from 'react-motion'
 // local imports
-import { getBoundingClientRect, enums } from '../utils'
-import styles from './styles'
+import { getBoundingClientRect, calcPosition, enums, isEqual, isEmpty } from '../utils'
+import styles, { caretStyles, getTranslation } from './styles'
 
+const initialState = {
+  tooltipDims: {},
+  showTooltip: false
+}
 
 class Tooltip extends React.Component {
 
@@ -14,66 +20,143 @@ class Tooltip extends React.Component {
     style: PropTypes.object,
     toggleOnClick: PropTypes.bool,
     tooltipStyles: PropTypes.object,
-    type: PropTypes.oneOf(['info', 'dialog'])
+    type: PropTypes.oneOf(['info', 'dialog']),
+    // the offset between the tooltip and the tooltip's parent
+    offset: PropTypes.number,
+    // the padding between the edge of the window and the tooltip
+    padding: PropTypes.number,
+    // the size of the caret on info tooltips
+    caretSize: PropTypes.number,
+    motionConfig: PropTypes.shape({
+      stiffness: PropTypes.number,
+      damping: PropTypes.number
+    }),
+    delay: PropTypes.number
   }
 
   static defaultProps = {
-    type: 'info'
-  }
-
-  _dispatch() {
-    // constructor custom event
-    const event = new CustomEvent(enums.ON_TOOLTIP, {
-      detail: {
-        text: this.props.text,
-        type: this.props.type,
-        tooltipStyles: this.props.tooltipStyles,
-        containerDims: getBoundingClientRect(this.node)
-      }
-    })
-
-    // dispatch event
-    window.dispatchEvent(event)
-  }
-
-  _clear() {
-    // constructor custom event
-    const event = new CustomEvent(enums.ON_TOOLTIP, {
-      detail: {
-        text: '',
-        type: '',
-        tooltipStyles: {},
-        containerDims: {}
-      }
-    })
-
-    // dispatch event
-    window.dispatchEvent(event)
-  }
-
-  render() {
-    const { toggleOnClick } = this.props
-
-    return (
-      <div
-        ref={node => this.node = node}
-        style={{...styles.container, ...this.props.style}}
-        onClick={toggleOnClick ? this._dispatch : this._clear}
-        onScroll={this._clear}
-        onMouseLeave={this._clear}
-        onMouseEnter={toggleOnClick ? () => ({}) : this._dispatch}
-      >
-        {this.props.children}
-      </div>
-    )
+    type: 'info',
+    offset: enums.offset,
+    padding: enums.padding,
+    caretSize: enums.caretSize,
+    motionConfig: {
+      stiffness: 180,
+      damping: 12
+    }
   }
 
   constructor() {
     super()
 
-    this._dispatch = this._dispatch.bind(this)
-    this._clear = this._clear.bind(this)
+    this.state = initialState
+    this.body = document.getElementsByTagName('body')[0]
   }
+
+  componentDidMount = () => this._addTooltipNode()
+
+  componentDidUpdate = (_, { tooltipDims: previousDims }) => {
+    const currentDims = getBoundingClientRect(this.tooltip)
+
+    if (!isEqual(previousDims, currentDims)) {
+      this.setState(prevState => ({
+        ...prevState,
+        tooltipDims: currentDims
+      }))
+    }
+  }
+
+  _showTooltip = () => {
+    this.setState(prevState => ({
+      ...prevState,
+      showTooltip: true
+    }))
+  }
+
+  _hideTooltip = () => this.setState(prevState => ({
+    ...prevState,
+    showTooltip: false
+  }))
+
+  get _tooltipNode() {
+    return document.getElementById('react-autotip')
+  }
+
+  _removeTooltipNode = () => this._tooltipNode.remove()
+
+  _reset = () => this.setState(() => initialState)
+
+  _addTooltipNode = () => {
+    // only add node if none exists yet
+    if (!this._tooltipNode) {
+      const newTooltipNode = document.createElement('div')
+      newTooltipNode.id = 'react-autotip'
+      this.body.appendChild(newTooltipNode)
+    }
+  }
+
+  get _tooltip() {
+    // get the dims of the container element
+    const containerDims = getBoundingClientRect(this.containerNode)
+    // grab state
+    const { showTooltip, tooltipDims } = this.state
+    // grab tooltip props
+    const { text, type, offset, padding, caretSize, tooltipStyles } = this.props
+    // grab position data
+    const { pos = 'top', ...rest } = calcPosition({ containerDims, tooltipDims, offset, padding })
+
+    return (
+      <Motion
+        defaultStyle={{
+          opacity: 0,
+          translate: 4
+        }}
+        style={{
+          opacity: spring(showTooltip ? 1 : 0, presets.stiff),
+          translate: spring(showTooltip ? 0 : 4, this.props.motionConfig)
+        }}
+        onRest={showTooltip ? () => ({}) : this._reset}
+      >
+        {({opacity, translate}) => (
+          <div
+            ref={node => this.tooltip = node}
+            style={{
+              // pre-cooked styles depending on type
+              ...styles.tooltipContainer[type],
+              // positional data
+              ...rest,
+              // any custom user-provided styles
+              ...tooltipStyles,
+              // interpolated opacity prop
+              opacity,
+              // interpolated translation props
+              transform: getTranslation(translate, pos)
+            }}
+          >
+            <div style={styles.content[type]}>
+              {text}
+              {type === 'info' && <div style={caretStyles({caretSize})[pos]} />}
+            </div>
+          </div>
+        )}
+      </Motion>
+    )
+  }
+
+  render = () => (
+    <div
+      ref={node => this.containerNode = node}
+      style={{...styles.container, ...this.props.style}}
+      onClick={this.props.toggleOnClick ? this._showTooltip : this._hideTooltip}
+      onScroll={this._hideTooltip}
+      onMouseLeave={this._hideTooltip}
+      onMouseEnter={this.props.toggleOnClick ? () => ({}) : this._showTooltip}
+    >
+      {this.props.children}
+      {(this.state.showTooltip || !isEmpty(this.state.tooltipDims)) && (
+        ReactDOM.createPortal(this._tooltip, this._tooltipNode)
+      )}
+    </div>
+  )
 }
 
 export default Tooltip

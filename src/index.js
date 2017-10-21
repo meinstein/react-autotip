@@ -1,2 +1,2 @@
 export Tooltip from './Tooltip'
-export TooltipContainer from './TooltipContainer'
+// export TooltipContainer from './TooltipContainer'
