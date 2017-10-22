@@ -1,6 +1,6 @@
 export default {
-  ON_TOOLTIP: 'onreactautotip',
+  REACT_AUTOTIP: 'react-autotip',
   offset: 8,
   padding: 16,
-  caretSize: 5
+  caretSize: 5,
 }

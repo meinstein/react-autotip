@@ -13,9 +13,12 @@ const App = () => (
           style={styles.tooltip}
           type="info"
           text="testing the tooltip"
+          delay={350}
         >
           <div style={styles.infoBox}>
             type=info
+            <br/>
+            delay=350ms
           </div>
         </Tooltip>
         <Tooltip
@@ -62,9 +65,11 @@ const App = () => (
           style={styles.tooltip}
           type="dialog"
           text="testing the tooltip"
+          delay={500}
         >
           <div style={styles.dialogBox}>
-            type=dialog
+            type=dialog <br/>
+            delay=500ms
           </div>
         </Tooltip>
       </div>

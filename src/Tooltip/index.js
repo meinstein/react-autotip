@@ -9,7 +9,8 @@ import styles, { caretStyles, getTranslation } from './styles'
 
 const initialState = {
   tooltipDims: {},
-  showTooltip: false
+  showTooltip: false,
+  timeoutID: null
 }
 
 class Tooltip extends React.Component {
@@ -66,19 +67,34 @@ class Tooltip extends React.Component {
   }
 
   _showTooltip = () => {
-    this.setState(prevState => ({
-      ...prevState,
-      showTooltip: true
-    }))
+    const { delay } = this.props
+
+    if (delay) {
+      this.setState(prevState => ({
+        ...prevState,
+        timeoutID: setTimeout(this._activateTooltip, delay)
+      }))
+    } else {
+      this._activateTooltip()
+    }
   }
 
-  _hideTooltip = () => this.setState(prevState => ({
+  _activateTooltip = () => this.setState(prevState => ({
     ...prevState,
-    showTooltip: false
+    showTooltip: true
   }))
 
+  _hideTooltip = () => this.setState(prevState => {
+    clearTimeout(prevState.timeoutID)
+    return {
+      ...prevState,
+      showTooltip: false,
+      timeoutID: null
+    }
+  })
+
   get _tooltipNode() {
-    return document.getElementById('react-autotip')
+    return document.getElementById(enums.REACT_AUTOTIP)
   }
 
   _removeTooltipNode = () => this._tooltipNode.remove()
@@ -86,10 +102,10 @@ class Tooltip extends React.Component {
   _reset = () => this.setState(() => initialState)
 
   _addTooltipNode = () => {
-    // only add node if none exists yet
+    // only add tooltip node to dom if none exists yet
     if (!this._tooltipNode) {
       const newTooltipNode = document.createElement('div')
-      newTooltipNode.id = 'react-autotip'
+      newTooltipNode.id = enums.REACT_AUTOTIP
       this.body.appendChild(newTooltipNode)
     }
   }
