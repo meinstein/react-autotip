@@ -4,9 +4,10 @@
 [![Coverage Status](https://coveralls.io/repos/github/meinstein/react-autotip/badge.svg?branch=master)](https://coveralls.io/github/meinstein/react-autotip?branch=master)
 [![npm](https://img.shields.io/npm/v/react-autotip.svg)](https://www.npmjs.com/package/react-autotip)
 
-A handful of simple, auto-positioning tooltips
+A handful of simple, auto-positioning tooltips *(compatible only with React 16+)*
 
 `npm i react-autotip`
+
 
 ## Example
 
