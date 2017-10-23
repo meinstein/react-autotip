@@ -45,7 +45,7 @@ Wrap any element with a Tooltip and it will automatically position itself to eit
 | tooltipStyles  |        {}      | Change aspects of the tooltip's style                             |
 | delay          |        0ms     | Delay before tooltip appears (in milliseconds)                    |
 | toggleOnClick  |        false   | Tooltip appears only after clicking on target element             |
-| motionConfig   | {stiffness: 180: damping: 12}| Choose your own params  [here](https://chenglou.github.io/react-motion/demos/demo5-spring-parameters-chooser/)|
+| motionConfig   | {stiffness: 210: damping: 20}| Choose your own params  [here](https://chenglou.github.io/react-motion/demos/demo5-spring-parameters-chooser/)|
 | padding        |        16px    | Minimum padding between edge of viewport and tooltip              |
 | offset         |        8px     | Offset between the tooltip and the tooltip's child                |
 | caretSize      |        5px     | Size of the tooltip's caret                                       |

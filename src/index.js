@@ -41,8 +41,8 @@ class Tooltip extends React.Component {
     padding: enums.padding,
     caretSize: enums.caretSize,
     motionConfig: {
-      stiffness: 180,
-      damping: 12
+      stiffness: 210,
+      damping: 20
     }
   }
 
