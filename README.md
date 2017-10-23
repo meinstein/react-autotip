@@ -11,33 +11,20 @@ A handful of simple, auto-positioning tooltips
 ## Example
 
 ```js
-import { Tooltip, TooltipContainer } from 'react-autotip'
+import Tooltip from 'react-autotip'
 
 const MyComponent = () => (
-  <div>
-    {/* must render one instance of TooltipContainer somewhere in your app */}
-    <TooltipContainer />
+  <Tooltip type="info" text="I am a tooltip">
     <div>
-      <Tooltip type="info" text="I am a tooltip">
-        <div />
-      </Tooltip>
+      Hover over me to to reveal tooltip.
     </div>
-  </div>
+  </Tooltip>
 )
 ```
 
 ## Automatic Positioning
 
 Wrap any element with a Tooltip and it will automatically position itself to either the top, right, bottom, or left based on where in the viewport its child element is rendered.
-
-## TooltipContainer
-
-#### Props
-|   name         |     default    |    description                                                    |
-|----------------|----------------|-------------------------------------------------------------------|
-| padding        |        16px    | Minimum padding between edge of viewport and tooltip              |
-| offset         |        8px     | Offset between the tooltip and the tooltip's child                |
-| caretSize      |        5px     | Size of the tooltip's caret                                       |
 
 ## Tooltip
 
@@ -55,4 +42,9 @@ Wrap any element with a Tooltip and it will automatically position itself to eit
 | text           |        ""      | The text to render inside the tooltip                             |
 | style          |        {}      | Pass any positioning style, etc here                              |
 | tooltipStyles  |        {}      | Change aspects of the tooltip's style                             |
-| toggleOnClick  |      false     | Tooltip appears only after clicking on target element             |
+| delay          |        0ms     | Delay before tooltip appears (in milliseconds)                    |
+| toggleOnClick  |        false   | Tooltip appears only after clicking on target element             |
+| motionConfig   | {stiffness: 180: damping: 12}| Choose your own params  [here](https://chenglou.github.io/react-motion/demos/demo5-spring-parameters-chooser/)|
+| padding        |        16px    | Minimum padding between edge of viewport and tooltip              |
+| offset         |        8px     | Offset between the tooltip and the tooltip's child                |
+| caretSize      |        5px     | Size of the tooltip's caret                                       |
