@@ -55,6 +55,12 @@ class Tooltip extends React.Component {
 
   componentDidMount = () => this._addTooltipNode()
 
+  componentWillReceiveProps = nextProps => {
+    if (this.props.text && !nextProps.text) {
+      this._hideTooltip()
+    }
+  }
+
   componentDidUpdate = (_, { tooltipDims: previousDims }) => {
     const currentDims = getBoundingClientRect(this.tooltip)
 

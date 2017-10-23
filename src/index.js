@@ -1,2 +1,1 @@
-export Tooltip from './Tooltip'
-// export TooltipContainer from './TooltipContainer'
+export { default as Tooltip } from './Tooltip'

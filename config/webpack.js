@@ -25,7 +25,12 @@ if (process.env.NODE_ENV === 'production') {
   // use production configuration instead
   devtool = ''
   // do not include react in build
-  externals = {'react': 'react'}
+  externals = {
+    'react': 'react',
+    'prop-types': 'prop-types',
+    'react-dom': 'react-dom',
+    'react-motion': 'react-motion',
+  }
   // optmize the build for production
   plugins.push(
     new webpack.LoaderOptionsPlugin({
