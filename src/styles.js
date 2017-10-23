@@ -5,12 +5,9 @@ const container = {
   fontFamily: styles.fontFamily,
   borderRadius: 2,
   pointerEvents: 'none',
-  fontSmoothing: 'subpixel-antialiased'
 }
 
-const content = {
-  fontSmoothing: 'subpixel-antialiased'
-}
+const content = {}
 
 const caret = {
   width: 0,
@@ -93,13 +90,13 @@ export const caretStyles = ({caretSize}) => ({
 export const getTranslation = (val, pos) => {
   switch (pos) {
   case 'top':
-    return `translate3d(-50%, calc(${val}px - 100%), 0)`
+    return `translate3d(-50%, calc(${val}px - 100%), 0px)`
   case 'right':
-    return `translate3d(${-val}px, -50%, 0)`
+    return `translate3d(${-val}px, -50%, 0px)`
   case 'bottom':
-    return `translate3d(-50%, ${-val}px, 0)`
+    return `translate3d(-50%, ${-val}px, 0px)`
   case 'left':
-    return `translate3d(calc(${val}px - 100%), -50%, 0)`
+    return `translate3d(calc(${val}px - 100%), -50%, 0px)`
   default:
     return null
   }
