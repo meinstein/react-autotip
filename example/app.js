@@ -1,7 +1,7 @@
 // external imports
 import React from 'react'
 // internal imports
-import { Tooltip } from '../src'
+import Tooltip from '../src'
 // local imports
 import styles from './styles'
 

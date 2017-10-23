@@ -1,18 +1,15 @@
-import { styles } from '../utils'
+import { styles } from './utils'
 
 const container = {
   position: 'fixed',
   fontFamily: styles.fontFamily,
-  zIndex: 100,
   borderRadius: 2,
-  pointerEvents: 'none'
+  pointerEvents: 'none',
+  fontSmoothing: 'subpixel-antialiased'
 }
 
 const content = {
-  position: 'relative',
-  lineHeight: 1,
-  fontSmoothing: 'antialiased',
-  transform: 'translateZ(0px)'
+  fontSmoothing: 'subpixel-antialiased'
 }
 
 const caret = {
@@ -96,13 +93,13 @@ export const caretStyles = ({caretSize}) => ({
 export const getTranslation = (val, pos) => {
   switch (pos) {
   case 'top':
-    return `translate(-50%, calc(${val}px - 100%))`
+    return `translate3d(-50%, calc(${val}px - 100%), 0)`
   case 'right':
-    return `translate(${-val}px, -50%)`
+    return `translate3d(${-val}px, -50%, 0)`
   case 'bottom':
-    return `translate(-50%, ${-val}px)`
+    return `translate3d(-50%, ${-val}px, 0)`
   case 'left':
-    return `translate(calc(${val}px - 100%), -50%)`
+    return `translate3d(calc(${val}px - 100%), -50%, 0)`
   default:
     return null
   }
