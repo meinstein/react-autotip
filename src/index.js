@@ -46,14 +46,7 @@ class Tooltip extends React.Component {
     }
   }
 
-  constructor() {
-    super()
-
-    this.state = initialState
-    this.body = document.getElementsByTagName('body')[0]
-  }
-
-  componentDidMount = () => this._addTooltipNode()
+  state = initialState
 
   componentWillReceiveProps = nextProps => {
     if (this.props.text && !nextProps.text) {
@@ -103,18 +96,7 @@ class Tooltip extends React.Component {
     return document.getElementById(enums.REACT_AUTOTIP)
   }
 
-  _removeTooltipNode = () => this._tooltipNode.remove()
-
   _reset = () => this.setState(() => initialState)
-
-  _addTooltipNode = () => {
-    // only add tooltip node to dom if none exists yet
-    if (!this._tooltipNode) {
-      const newTooltipNode = document.createElement('div')
-      newTooltipNode.id = enums.REACT_AUTOTIP
-      this.body.appendChild(newTooltipNode)
-    }
-  }
 
   get _tooltip() {
     // get the dims of the container element
@@ -181,4 +163,6 @@ class Tooltip extends React.Component {
   )
 }
 
+// exports
 export default Tooltip
+export TooltipPortalProvider from './Provider'

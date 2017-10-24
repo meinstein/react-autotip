@@ -9,13 +9,32 @@ A handful of simple, auto-positioning tooltips *(compatible only with React 16+)
 `npm i react-autotip`
 
 
-## Example
+## TooltipPortalProvider
+
+```js
+import { TooltipPortalProvider } from 'react-autotip'
+
+ReactDOM.render(
+  <TooltipPortalProvider>
+    <App />
+  </TooltipPortalProvider>,
+  document.getElementById('app')
+)
+```
+
+#### Props
+
+|   name         |     default    |    description                                                    |
+|----------------|----------------|-------------------------------------------------------------------|
+| style          |       {}       | Pass styling to the portal DOM element                            |
+
+## Tooltip
 
 ```js
 import Tooltip from 'react-autotip'
 
 const MyComponent = () => (
-  <Tooltip type="info" text="I am a tooltip">
+  <Tooltip type="info" text="I am tooltip.">
     <div>
       Hover over me to to reveal tooltip.
     </div>
@@ -23,11 +42,9 @@ const MyComponent = () => (
 )
 ```
 
-## Automatic Positioning
+#### Automatic Positioning
 
 Wrap any element with a Tooltip and it will automatically position itself to either the top, right, bottom, or left based on where in the viewport its child element is rendered.
-
-## Tooltip
 
 #### Type (prop)
 

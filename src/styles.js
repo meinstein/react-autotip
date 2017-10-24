@@ -7,7 +7,11 @@ const container = {
   pointerEvents: 'none',
 }
 
-const content = {}
+const content = {
+  fontFamily: 'inherit',
+  fontSize: 'inherit',
+  fontSmoothing: 'subpixel-antialiased'
+}
 
 const caret = {
   width: 0,
