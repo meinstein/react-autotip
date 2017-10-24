@@ -49,6 +49,7 @@ class Tooltip extends React.Component {
   state = initialState
 
   componentWillReceiveProps = nextProps => {
+    // hide tooltip if the text is removed
     if (this.props.text && !nextProps.text) {
       this._hideTooltip()
     }
@@ -66,15 +67,17 @@ class Tooltip extends React.Component {
   }
 
   _showTooltip = () => {
-    const { delay } = this.props
-
-    if (delay) {
-      this.setState(prevState => ({
-        ...prevState,
-        timeoutID: setTimeout(this._activateTooltip, delay)
-      }))
-    } else {
-      this._activateTooltip()
+    const { delay, text } = this.props
+    // only show if there is some text provided
+    if (text) {
+      if (delay) {
+        this.setState(prevState => ({
+          ...prevState,
+          timeoutID: setTimeout(this._activateTooltip, delay)
+        }))
+      } else {
+        this._activateTooltip()
+      }
     }
   }
 
