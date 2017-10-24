@@ -17,7 +17,7 @@ class Tooltip extends React.Component {
 
   static propTypes = {
     children: PropTypes.node.isRequired,
-    text: PropTypes.string,
+    text: PropTypes.node,
     style: PropTypes.object,
     toggleOnClick: PropTypes.bool,
     tooltipStyles: PropTypes.object,
