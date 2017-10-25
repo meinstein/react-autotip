@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import { Motion, spring, presets } from 'react-motion'
 // local imports
 import { getBoundingClientRect, calcPosition, enums, isEqual, isEmpty } from './utils'
-import styles, { caretStyles, getTranslation } from './styles'
+import styles, { caretStyles, getMargin } from './styles'
 
 const initialState = {
   tooltipDims: {},
@@ -115,15 +115,15 @@ class Tooltip extends React.Component {
       <Motion
         defaultStyle={{
           opacity: 0,
-          translate: 4
+          margin: 4
         }}
         style={{
           opacity: spring(showTooltip ? 1 : 0, presets.stiff),
-          translate: spring(showTooltip ? 0 : 4, this.props.motionConfig)
+          margin: spring(showTooltip ? 0 : 4, this.props.motionConfig)
         }}
         onRest={showTooltip ? () => ({}) : this._reset}
       >
-        {({opacity, translate}) => (
+        {({opacity, margin}) => (
           <div
             ref={node => this.tooltip = node}
             style={{
@@ -135,8 +135,8 @@ class Tooltip extends React.Component {
               ...tooltipStyles,
               // interpolated opacity prop
               opacity,
-              // interpolated translation props
-              transform: getTranslation(translate, pos)
+              // interpolated margin
+              ...getMargin(margin, pos)
             }}
           >
             <div style={styles.content[type]}>

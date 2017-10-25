@@ -91,17 +91,25 @@ export const caretStyles = ({caretSize}) => ({
   }
 })
 
-export const getTranslation = (val, pos) => {
+export const getMargin = (val, pos) => {
   switch (pos) {
   case 'top':
-    return `translate3d(-50%, calc(${val}px - 100%), 0px)`
+    return {
+      marginTop: val
+    }
   case 'right':
-    return `translate3d(${-val}px, -50%, 0px)`
+    return {
+      marginLeft: -val
+    }
   case 'bottom':
-    return `translate3d(-50%, ${-val}px, 0px)`
+    return {
+      marginTop: -val
+    }
   case 'left':
-    return `translate3d(calc(${val}px - 100%), -50%, 0px)`
+    return {
+      marginLeft: val
+    }
   default:
-    return null
+    return {}
   }
 }
