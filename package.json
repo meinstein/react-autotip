@@ -2,12 +2,11 @@
   "name": "react-autotip",
   "version": "0.1.9",
   "description": "A variety of simple auto-positioning tooltips",
-  "main": "index.js",
-  "module": "lib/index.js",
+  "main": "lib/index.js",
   "scripts": {
     "build": "webpack --config config/webpack.js",
     "build:prod": "NODE_ENV=production npm run build",
-    "build:lib": "babel src --out-dir lib",
+    "build:lib": "babel src --out-dir lib --presets=es2015,react,stage-1",
     "clean": "rm -rf index.* lib/",
     "dev": "NODE_ENV=dev webpack-dev-server --inline --hot --config config/webpack.js",
     "lint": "eslint src/**/*.js",
@@ -28,7 +27,7 @@
   "author": "Maximillian Einstein",
   "license": "MIT",
   "devDependencies": {
-    "babel-cli": "^6.16.0",
+    "babel-cli": "^6.26.0",
     "babel-eslint": "^7.2.3",
     "babel-jest": "^21.2.0",
     "babel-loader": "^7.0.0",
