@@ -14,16 +14,14 @@
     "test": "NODE_ENV=test jest",
     "test:watch": "npm run test -- --watch",
     "test:coverage": "npm run test -- --coverage",
-    "test:coverage:report": "npm run test:coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+    "test:coverage:report":
+      "npm run test:coverage && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
   },
   "repository": {
     "type": "git",
-    "url": "github.com/meinstein/react-autotip"
+    "url": "https://github.com/meinstein/react-autotip.git"
   },
-  "keywords": [
-    "react",
-    "tooltip"
-  ],
+  "keywords": ["react", "tooltip"],
   "author": "Maximillian Einstein",
   "license": "MIT",
   "devDependencies": {
@@ -63,15 +61,12 @@
     },
     "testRegex": "(/src/.*test\\.js)$",
     "moduleNameMapper": {
-      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/config/__mocks__/fileMock.js",
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
+        "<rootDir>/config/__mocks__/fileMock.js",
       "\\.(css|scss)$": "<rootDir>/config/__mocks__/styleMock.js"
     },
-    "modulePaths": [
-      "<rootDir>/src"
-    ],
-    "coveragePathIgnorePatterns": [
-      "/node_modules/"
-    ]
+    "modulePaths": ["<rootDir>/src"],
+    "coveragePathIgnorePatterns": ["/node_modules/"]
   },
   "dependencies": {
     "prop-types": "^15.5.10",
